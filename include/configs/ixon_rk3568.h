@@ -62,7 +62,7 @@
 	 "done;"\
 	 "setenv bootcmd_pxe \"\";"\
 	 "if test -n \"${bootpart}\"; then;"\
-	 "	setenv bootargs \"console=${console} root=${bootpart} panic=10 rauc.slot=${raucslot} rootrw=/dev/mmcblk0p4 freset=$FRESET quiet\";"\
+	 "	setenv bootargs \"console=${console} root=${bootpart} panic=10 rauc.slot=${raucslot} rootrw=/dev/mmcblk0p4 freset=$FRESET\";"\
 	 "	setenv FRESET \"0\";;"\
 	 "	saveenv;"\
 	 "else;"\
