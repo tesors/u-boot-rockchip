@@ -62,7 +62,7 @@
 	 "done;"\
 	 "setenv bootcmd_pxe \"\";"\
 	 "if test -n \"${bootpart}\"; then;"\
-	 "	setenv bootargs \"console=${console} root=${bootpart} panic=10 rauc.slot=${raucslot} rootrw=/dev/mmcblk0p4 freset=$FRESET quiet\";"\
+	 "	setenv bootargs \"console=${console} root=${bootpart} panic=10 rauc.slot=${raucslot} rootrw=/dev/mmcblk0p4 freset=$FRESET \";"\
 	 "	setenv FRESET \"0\";;"\
 	 "	saveenv;"\
 	 "else;"\
@@ -75,8 +75,7 @@
 	 "fi;"\
 	 "load ${BOOT_DEV} ${kernel_addr_r}  /boot/Image;"\
 	 "load ${BOOT_DEV} ${fdt_addr_r}  /boot/rk3568-ixon-3568q.dtb;"\
-	 "load ${BOOT_DEV} ${ramdisk_addr_r}  /boot/uramdisk.image.gz;"\
-	 "booti ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r};"
+	 "booti ${kernel_addr_r} - ${fdt_addr_r};"
  
  
  #define PARTS_IXON \
