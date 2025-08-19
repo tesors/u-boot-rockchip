@@ -61,19 +61,19 @@
 	"done;" \
 	"setenv bootcmd_pxe "";" \
 	"if test -n \"${bootpart}\"; then;" \
-	"	setenv bootargs \"console=${console} root=${bootpart} panic=10 rauc.slot=${raucslot} rootrw=/dev/mmcblk0p4 freset=$FRESET quiet\";" \
+	"	setenv bootargs \"console=${console} root=${bootpart} panic=10 rauc.slot=${raucslot} rootrw=/dev/mmcblk0p4 freset=$FRESET ixon=ixrouter6 quiet\";" \
 	"	setenv FRESET \"0\";;" \
 	"	saveenv;" \
 	"else;" \
 	"	echo \"No valid RAUC slot found. Resetting tries to 3\";" \
-	"env default -a;" \
-	"setenv BOOT_A_LEFT 3;" \
-	"setenv BOOT_B_LEFT 3;" \
-	"saveenv;" \
-	"fastboot usb 0;" \
+	"	env default -a;" \
+	"	setenv BOOT_A_LEFT 3;" \
+	"	setenv BOOT_B_LEFT 3;" \
+	"	saveenv;" \
+	"	fastboot usb 0;" \
 	"fi;" \
 	"load ${BOOT_DEV} ${kernel_addr_r}  /boot/Image;" \
-	"load ${BOOT_DEV} ${fdt_addr_r}  /boot/rk3528-radxa-e20c.dtb;" \
+	"load ${BOOT_DEV} ${fdt_addr_r}  /boot/rk3528-ixon-xrouter.dtb;" \
 	"load ${BOOT_DEV} ${ramdisk_addr_r}  /boot/uramdisk.image.gz;" \
 	"booti ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r};"
 
